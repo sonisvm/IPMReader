@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE isopackager SYSTEM "genericpackager.dtd">
+<isopackager>
+  <isofield
+      id="0"
+      length="4"
+      name="MESSAGE TYPE INDICATOR"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="1"
+      length="16"
+      name="BIT MAP"
+      class="org.jpos.iso.IFB_BITMAP"/>
+  <isofield
+      id="2"
+      length="19"
+      name="PAN"
+      class="org.jpos.iso.IFA_LLNUM"/>
+  <isofield
+      id="3"
+      length="6"
+      name="Processing code"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="4"
+      length="12"
+      pad="false"
+      name="Transaction amount"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="5"
+      length="12"
+      pad="false"
+      name="Reconciliation amount"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="6"
+      length="12"
+      pad="false"
+      name="Cardholder billing amount"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="9"
+      length="8"
+      name="Reconciliation conversion rate"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="10"
+      length="8"
+      name="Cardholder billing conversion rate"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="12"
+      length="12"
+      name="Reconciliation conversion rate"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="14"
+      length="4"
+      name="Expiration date"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="22"
+      length="12"
+      name="Point of service entry mode"
+      class="org.jpos.iso.IF_CHAR"/>
+  <isofield
+      id="23"
+      length="3"
+      name="Card sequence number"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="24"
+      length="3"
+      name="Function code"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="25"
+      length="4"
+      name="Message code"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="26"
+      length="4"
+      name="Card acceptor business code"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="30"
+      length="24"
+      name="Original amounts"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="31"
+      length="23"
+      name="Acquirer reference data"
+      class="org.jpos.iso.IFA_LLCHAR"/>
+  <isofield
+      id="32"
+      length="11"
+      name="Acquiring institution code"
+      class="org.jpos.iso.IFA_LLNUM"/>
+  <isofield
+      id="33"
+      length="11"
+      name="Forwarding institution code"
+      class="org.jpos.iso.IFA_LLNUM"/>
+  <isofield
+      id="37"
+      length="12"
+      name="Retrieval reference number"
+      class="org.jpos.iso.IF_CHAR"/>
+  <isofield
+      id="38"
+      length="6"
+      pad="true"
+      name="Retrieval reference number"
+      class="org.jpos.iso.IF_CHAR"/>
+  <isofield
+      id="40"
+      length="3"
+      name="Service code"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="41"
+      length="8"
+      name="Card acceptor terminal ID"
+      class="org.jpos.iso.IF_CHAR"/>
+  <isofield
+      id="42"
+      length="15"
+      pad="true"
+      name="Card acceptor ID code"
+      class="org.jpos.iso.IF_CHAR"/>
+  <isofield
+      id="43"
+      length="99"
+      pad="true"
+      name="Card acceptor name and location"
+      class="org.jpos.iso.IFA_LLCHAR"/>
+  <isofield
+      id="48"
+      length="999"
+      pad="true"
+      name="Additional Data"
+      class="org.jpos.iso.IFA_LLLCHAR"/>
+  <isofield
+      id="49"
+      length="3"
+      name="Transaction currency code"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="50"
+      length="3"
+      name="Reconciliation currency code"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="51"
+      length="3"
+      name="Cardholder billing currency code"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="54"
+      length="120"
+      name="Additional amounts"
+      class="org.jpos.iso.IFA_LLLNUM"/>
+  <isofield
+      id="55"
+      length="255"
+      name="ICC system-related data"
+      class="org.jpos.iso.IFA_LLLBINARY"/>
+  <isofield
+      id="62"
+      length="999"
+      name="Additional data 2"
+      class="org.jpos.iso.IFA_LLLCHAR"/>
+  <isofield
+      id="63"
+      length="16"
+      pad="true"
+      name="Transaction lifecycle ID"
+      class="org.jpos.iso.IFA_LLLCHAR"/>
+  <isofield
+      id="71"
+      length="8"
+      name="Message Number"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+  <isofield
+      id="72"
+      length="999"
+      name="Data record"
+      pad="true"
+      class="org.jpos.iso.IFA_LLLCHAR"/>
+  <isofield
+      id="73"
+      length="6"
+      name="Action Date"
+      class="org.jpos.iso.IFA_NUMERIC"/>
+   <isofield
+      id="93"
+      length="11"
+      name="Transaction destination institution ID code"
+      class="org.jpos.iso.IFA_LLCHAR"/>
+   <isofield
+      id="94"
+      length="11"
+      name="Transaction originator institution ID code"
+      class="org.jpos.iso.IFA_LLCHAR"/>
+   <isofield
+      id="95"
+      length="11"
+      name="Transaction originator institution ID code"
+      class="org.jpos.iso.IFA_LLCHAR"/>
+   <isofield
+      id="100"
+      length="11"
+      name="receiving institution ID code"
+      class="org.jpos.iso.IFA_LLCHAR"/>
+   <isofield
+      id="111"
+      length="12"
+      name="Currency conversion assessment amount"
+      class="org.jpos.iso.IFA_LLLNUM"/>
+  <isofield
+      id="123"
+      length="999"
+      pad="true"
+      name="Additional Data 3"
+      class="org.jpos.iso.IFA_LLLCHAR"/>
+  <isofield
+      id="124"
+      length="999"
+      pad="true"
+      name="Additional Data 4"
+      class="org.jpos.iso.IFA_LLLCHAR"/>
+  <isofield
+      id="125"
+      length="999"
+      pad="true"
+      name="Additional Data 5"
+      class="org.jpos.iso.IFA_LLLCHAR"/>
+  <isofield
+      id="127"
+      length="999"
+      pad="true"
+      name="Network Data"
+      class="org.jpos.iso.IFA_LLLCHAR"/>
+
+</isopackager>
