@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE isopackager SYSTEM "genericpackager.dtd">
+<!DOCTYPE isopackager SYSTEM "generic-subtag-packager.dtd">
 <isopackager>
   <isofield
       id="0"
@@ -16,12 +16,36 @@
       length="19"
       name="PAN"
       class="org.jpos.iso.IFA_LLNUM"/>
-  <isofield
+<!--   <isofield
       id="3"
       length="6"
       name="Processing code"
-      class="org.jpos.iso.IFA_NUMERIC"/>
-  <isofield
+      class="org.jpos.iso.IFA_NUMERIC"/>-->
+  <isofieldpackager
+  	  id="3"
+  	  length="6"
+  	  name="processingCode"
+  	  class="org.jpos.iso.IFA_NUMERIC"
+  	  firstField="1"
+  	  emitBitmap="false"
+  	  packager="org.jpos.iso.packager.GenericSubFieldPackager">
+  	  <isofield
+          id="1"
+          length="2"
+          name="Transaction type"
+          class="org.jpos.iso.IFA_NUMERIC"/>
+      <isofield
+          id="2"
+          length="2"
+          name="From account type"
+          class="org.jpos.iso.IFA_NUMERIC"/>
+      <isofield
+          id="3"
+          length="2"
+          name="To account type"
+          class="org.jpos.iso.IFA_NUMERIC"/>
+  </isofieldpackager>
+ 	<isofield
       id="4"
       length="12"
       pad="false"
@@ -49,21 +73,109 @@
       length="8"
       name="Cardholder billing conversion rate"
       class="org.jpos.iso.IFA_NUMERIC"/>
-  <isofield
+<!--  <isofield
       id="12"
       length="12"
-      name="Reconciliation conversion rate"
-      class="org.jpos.iso.IFA_NUMERIC"/>
+      name="Date and time"
+      class="org.jpos.iso.IFA_NUMERIC"/>-->
+<isofieldpackager
+  	  id="12"
+  	  length="12"
+  	  name="Date and time"
+  	  class="org.jpos.iso.IFB_BINARY"
+  	  firstField="1"
+  	  emitBitmap="false"
+  	  packager="org.jpos.iso.packager.GenericSubFieldPackager">
+  	  <isofield
+          id="1"
+          length="6"
+          name="Date"
+          class="org.jpos.iso.IFA_NUMERIC"/>
+      <isofield
+          id="2"
+          length="6"
+          name="Time"
+          class="org.jpos.iso.IFA_NUMERIC"/>
+  </isofieldpackager>
   <isofield
       id="14"
       length="4"
       name="Expiration date"
       class="org.jpos.iso.IFA_NUMERIC"/>
-  <isofield
+  <!-- <isofield
       id="22"
       length="12"
       name="Point of service entry mode"
-      class="org.jpos.iso.IF_CHAR"/>
+      class="org.jpos.iso.IF_CHAR"/> -->
+<isofieldpackager
+  	  id="22"
+  	  length="12"
+  	  name="Point of service entry mode"
+  	  class="org.jpos.iso.IFB_BINARY"
+  	  firstField="1"
+  	  emitBitmap="false"
+  	  packager="org.jpos.iso.packager.GenericSubFieldPackager">
+  	  <isofield
+          id="1"
+          length="1"
+          name="Card Data Input Capability"
+          class="org.jpos.iso.IF_CHAR"/>
+      <isofield
+          id="2"
+          length="1"
+          name="Cardholder authentication capability"
+          class="org.jpos.iso.IF_CHAR"/>
+	<isofield
+          id="3"
+          length="1"
+          name="Card capture capability"
+          class="org.jpos.iso.IF_CHAR"/>
+    <isofield
+          id="4"
+          length="1"
+          name="Terminal Operating environment"
+          class="org.jpos.iso.IF_CHAR"/>
+    <isofield
+          id="5"
+          length="1"
+          name="Cardholder present data"
+          class="org.jpos.iso.IF_CHAR"/>
+    <isofield
+          id="6"
+          length="1"
+          name="Card present data"
+          class="org.jpos.iso.IF_CHAR"/>
+    <isofield
+          id="7"
+          length="1"
+          name="Input mode"
+          class="org.jpos.iso.IF_CHAR"/>
+     <isofield
+          id="8"
+          length="1"
+          name="Cardholder authentication method"
+          class="org.jpos.iso.IF_CHAR"/>
+     <isofield
+          id="9"
+          length="1"
+          name="Authentication entity"
+          class="org.jpos.iso.IF_CHAR"/>
+     <isofield
+          id="10"
+          length="1"
+          name="Card data outout capability"
+          class="org.jpos.iso.IF_CHAR"/>
+     <isofield
+          id="11"
+          length="1"
+          name="Terminal data output capability"
+          class="org.jpos.iso.IF_CHAR"/>
+     <isofield
+          id="12"
+          length="1"
+          name="Pin capture capability"
+          class="org.jpos.iso.IF_CHAR"/>
+  </isofieldpackager>
   <isofield
       id="23"
       length="3"
@@ -84,11 +196,31 @@
       length="4"
       name="Card acceptor business code"
       class="org.jpos.iso.IFA_NUMERIC"/>
-  <isofield
+  <!-- <isofield
       id="30"
       length="24"
       name="Original amounts"
-      class="org.jpos.iso.IFA_NUMERIC"/>
+      class="org.jpos.iso.IFA_NUMERIC"/> -->
+<isofieldpackager
+  	  id="30"
+  	  length="24"
+  	  name="Original amounts"
+  	  class="org.jpos.iso.IFA_NUMERIC"
+  	  firstField="1"
+  	  emitBitmap="false"
+  	  packager="org.jpos.iso.packager.GenericSubFieldPackager">
+  	  <isofield
+          id="1"
+          length="12"
+          pad="false"
+          name="Original transaction amount"
+          class="org.jpos.iso.IFA_NUMERIC"/>
+      <isofield
+          id="2"
+          length="12"
+          name="Original reconciliation amount"
+          class="org.jpos.iso.IFA_NUMERIC"/>
+  </isofieldpackager>
   <isofield
       id="31"
       length="23"
@@ -137,12 +269,28 @@
       pad="true"
       name="Card acceptor name and location"
       class="org.jpos.iso.IFA_LLCHAR"/>
-  <isofield
+<!-- <isofield
       id="48"
       length="999"
       pad="true"
       name="Additional Data"
-      class="org.jpos.iso.IFA_LLLCHAR"/>
+      class="org.jpos.iso.IFA_LLLCHAR"/> -->
+<isofieldpackager
+	  id="48"
+	  length="999"
+	  name="Additional Data"
+	  emitBitmap="false"
+	  class="org.jpos.iso.IFA_LLLCHAR"
+	  firstField="105"
+	  tagMapper="com.somathew.maven.ipmreader.TTTTDecimalTagMapper"
+	  packager="org.jpos.iso.packager.GenericTaggedFieldsPackager">
+	  <isofield
+	  	id="105"
+	  	length="25"
+	  	name="File ID"
+	  	class="com.somathew.maven.ipmreader.IFA_TTTTLLLNUM"/>
+</isofieldpackager>
+
   <isofield
       id="49"
       length="3"

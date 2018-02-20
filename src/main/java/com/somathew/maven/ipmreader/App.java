@@ -3,8 +3,10 @@ package com.somathew.maven.ipmreader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.Map;
 
 import org.jpos.iso.ISOException;
+import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.packager.GenericPackager;
 
@@ -128,7 +130,8 @@ enum PDS{
 public class App {
 
 	public static void main(String[] args) throws IOException, ISOException {
-		RandomAccessFile file = new RandomAccessFile("C:\\Users\\somathew\\Documents\\Sprint work\\Sprint 124\\FirstPresentment-AllElements-1Txn-1LogicalFile.ipm", "r");
+		//RandomAccessFile file = new RandomAccessFile("C:\\Users\\somathew\\Documents\\Sprint work\\Sprint 124\\FirstPresentment-AllElements-1Txn-1LogicalFile.ipm", "r");
+		RandomAccessFile file = new RandomAccessFile("test.ipm", "r");
 		GenericPackager packager = new GenericPackager("ISO8583_format.xml");
 		ISOMsg msg;
 		
@@ -139,6 +142,7 @@ public class App {
 		byte[] byteArray = new byte[fileSize];
 		
 		while(numOfReadBytes < fileSize) {
+			
 			System.out.println("File size:"+fileSize + ", read:"+ numOfReadBytes);
 			msg = new ISOMsg();
 			
@@ -148,11 +152,19 @@ public class App {
 			
 			file.read(byteArray);
 			
+//			for(int i=0; i < byteArray.length; i++) {
+//				System.out.print((char)byteArray[i]);
+//			}
+				
+			//byteArray = "0200B2200000001000000000000000800000201234000000010000011072218012345606A5DFGR021ABCDEFGHIJ 1234567890".getBytes();
+			
 			msg.unpack(byteArray);
+			
 			
 			logISOMsg(msg);
 			
 			numOfReadBytes += msg.pack().length;
+			
 			
 		}
 
@@ -166,10 +178,23 @@ public class App {
 			System.out.println("BitMap value: " + msg.getComponent(-1).getValue());
 			for (int i=1;i<=msg.getMaxField();i++) {
 				if (msg.hasField(i)) {
-					System.out.println(msg.getPackager().getFieldDescription(msg, i)+" : "+msg.getString(i));
-					if(i==48 || i==62 || i==123 || i==124 || i==125) {
-						readAdditionalData(msg.getString(i));
+					//if there are children
+					if(msg.getComponent(i).getChildren().size()>0) {
+						System.out.println(msg.getPackager().getFieldDescription(msg, i));
+						Map<Integer, ISOField> children = msg.getComponent(i).getChildren();
+						for(Integer j : children.keySet()) {
+							System.out.println("\t Subfield "+children.get(j).getKey()+" : "+ children.get(j).getValue());
+						}
 					}
+					else {
+						System.out.println(msg.getPackager().getFieldDescription(msg, i)+" : "+msg.getString(i));
+						
+						if(i==48 || i==62 || i==123 || i==124 || i==125) {
+							readAdditionalData(msg.getString(i));
+							
+						}
+					}
+					
 				}
 			}
 		} catch (ISOException e) {
